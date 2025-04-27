@@ -1,0 +1,26 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Kodu indir
+      uses: actions/checkout@v4
+
+    - name: Node.js kur
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'  # veya senin kullandığın Node.js versiyonu
+
+    - name: Paketleri yükle
+      run: npm install
+
+    - name: Unit testleri çalıştır
+      run: npm test
